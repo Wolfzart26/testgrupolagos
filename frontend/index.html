@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LiquiVerde</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Inter, system-ui, Arial; background: #fafafa; }
+      header { display: flex; align-items: center; gap: 16px; padding: 12px 16px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 2; }
+      .logo { width: 36px; height: 36px; border-radius: 8px; background: #2bc1c6; display: grid; place-items: center; color: #fff; font-weight: 800; }
+      nav a { text-decoration: none; margin-left: 16px; color: #333; font-weight: 600; }
+      nav a.active { color: #2bc1c6; }
+      .container { max-width: 1100px; margin: 16px auto; padding: 0 16px; }
+      button { cursor: pointer; }
+      input, select { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 8px; }
+      .card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 12px; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

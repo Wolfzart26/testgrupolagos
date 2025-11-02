@@ -1,0 +1,55 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: liquiverde
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/00-init.sql:ro
+
+  api:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "npm install && npx nodemon --watch src --ext js,mjs,cjs,json src/index.js"
+    environment:
+      PGHOST: db
+      PGPORT: 5432
+      PGUSER: app
+      PGPASSWORD: app
+      PGDATABASE: liquiverde
+      NODE_ENV: development
+      # opcional si usas FS de red/lento: CHOKIDAR_USEPOLLING=1
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      # Montamos TODO el backend para que exista package.json + src
+      - ./backend:/app:delegated
+      - ./backend/src:/app/src
+      # Enmascaramos node_modules para que NO use el de tu host
+      - /app/node_modules
+
+  web:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    environment:
+      - VITE_API_URL=http://localhost:3000/api
+      # opcional en WSL/Windows: CHOKIDAR_USEPOLLING=1
+    depends_on:
+      - api
+    ports:
+      - "5173:5173"
+    volumes:
+      # Montamos TODO el frontend (src, index.html, tailwind/vite configs)
+      - ./frontend:/app:delegated
+      - ./frontend/src:/app/src
+      - /app/node_modules
+
+volumes:
+  dbdata:
