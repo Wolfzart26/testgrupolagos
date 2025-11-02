@@ -54,5 +54,5 @@ Se encuentra en la carpeta  sustainability.js
 
 **Algoritmo de mochila:** En Este caso se suman los valores de scoring de sostenibilidad  obteniendo un valor cercano al 1. Este valor indica que tan cercano esta el producto de ser elegible para poder comprar en base a presupuesto. por lo cual, de una lista selecciona los productos que cumplan con el mejor precio, con ser el mas popular, y ser el que menos contamine. para luego ir quitando o manteniendo los productos de la lista realizada por el usuario.
 
-##Uso de IA
+## Uso de IA
 En este trabajo se utilizo IA para poder comprender los algoritmos mencionandos en el test. Tambien se utiilizo para el desarrollo del codigo.
