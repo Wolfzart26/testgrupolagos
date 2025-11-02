@@ -56,3 +56,4 @@ Se encuentra en la carpeta  sustainability.js
 
 ## Uso de IA
 En este trabajo se utilizo IA para poder comprender los algoritmos mencionandos en el test. Tambien se utiilizo para el desarrollo del codigo.
+Por otro lado las apis mencionadas en el pdf, no se utilizaron. El motivo es que algunas no estaban disponibles, por lo cual se infieron algunos datos de los productos.
